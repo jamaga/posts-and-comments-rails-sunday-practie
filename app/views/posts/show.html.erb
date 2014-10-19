@@ -1,0 +1,20 @@
+<h1> Post </h1>
+
+<%= button_to "delete", @post, :method => :delete %>
+<hr>
+<h3><%= @post.title %></h3>
+<p></p><%= @post.content %></p>
+<hr>
+	<% @post.comments.each do |comment| %>
+	<%= comment.content  %>
+	<%= link_to 'indiv comment page', post_comment_path(@post.id, comment.id) %>
+
+	<hr>
+
+<% end %>
+
+<%= link_to 'Create Comment', new_post_comment_path(@post.id) %>
+
+
+
+
