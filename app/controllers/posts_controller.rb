@@ -11,6 +11,22 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 
+	def edit
+		@post = Post.find(params[:id])
+	end
+
+	def update
+		@post = Post.find(params[:id])
+		if @post.update_attributes post_params
+			redirect_to post_path(@post)
+		else
+			@errors = "say hello"
+			render 'edit'
+		end
+	end
+
+
+
 	def destroy
 		post = Post.find(params[:id]).destroy
 		post.comments.each do |comment|
@@ -26,7 +42,7 @@ class PostsController < ApplicationController
 
 	private
 		def post_params
-			post.require(:post).permit(:title, :content)
+			params.require(:post).permit(:title, :content, :id)
 		end
 end
 

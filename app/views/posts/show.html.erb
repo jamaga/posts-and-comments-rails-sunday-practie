@@ -1,6 +1,8 @@
 <h1> Post </h1>
 
 <%= button_to "delete", @post, :method => :delete %>
+<%#= button_to "edit post", @post, :method => :edit %>
+<%= link_to "edit post", edit_post_path %>
 <hr>
 <h3><%= @post.title %></h3>
 <p></p><%= @post.content %></p>
